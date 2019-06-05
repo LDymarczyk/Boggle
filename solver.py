@@ -8,7 +8,7 @@ import sys
 from collections import defaultdict
 
 
-points = {3: 1, 4: 1, 5: 2, 6: 3, 7: 5, 8: 11, 9: 11, 10: 11, 11: 11, 12: 11, 13: 11, 14: 11, 15: 11, 16: 11}
+points = {1: 0, 2: 0, 3: 1, 4: 1, 5: 2, 6: 3, 7: 5, 8: 11, 9: 11, 10: 11, 11: 11, 12: 11, 13: 11, 14: 11, 15: 11, 16: 11}
 
 
 def get_words(inputFile, norm=None):
@@ -101,10 +101,10 @@ def boggle_solver(file_path):
     words = get_words(file_path, norm=normalize)
     words = dict((w, None) for w in words)
 
-    board = [['a', 'a', 'a', 'a'],
-             ['b', 'b', 'b', 'b'],
-             ['c', 'c', 'c', 'c'],
-             ['d', 'd', 'd', 'd']]
+    board = [['a', 'l', 'o', 'j'],
+             ['v', 'u', 't', 's'],
+             ['l', 'c', 'h', 'e'],
+             ['g', 'k', 'r', 'x']]
 
 
     nodes = nodes_from_board(board)
@@ -127,4 +127,4 @@ def boggle_solver(file_path):
     return summarize_results(solutionDetails)
 
 
-boggle_solver("slowa.txt")
+print (boggle_solver("slowa.txt"))
