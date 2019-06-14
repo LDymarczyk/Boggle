@@ -4,7 +4,6 @@ See http://www.python.org/doc/essays/graphs.html
 """
 import operator
 import sys
-# from collections import Counter
 from collections import defaultdict
 
 
@@ -36,7 +35,6 @@ def find_path(graph, start, end, path=[]):
 
 
 def find_all_paths(graph, start, end, path=[]):
-    # import pdb; pdb.set_trace()
     path = path + [start]
     if start == end:
         return [path]
@@ -97,15 +95,9 @@ def summarize_results(result):
     return points_counter
 
 
-def boggle_solver(file_path):
+def boggle_solver(file_path, board):
     words = get_words(file_path, norm=normalize)
     words = dict((w, None) for w in words)
-
-    board = [['a', 'l', 'o', 'j'],
-             ['v', 'u', 't', 's'],
-             ['l', 'c', 'h', 'e'],
-             ['g', 'k', 'r', 'x']]
-
 
     nodes = nodes_from_board(board)
     graph = graph_from_board(board)
@@ -127,4 +119,10 @@ def boggle_solver(file_path):
     return summarize_results(solutionDetails)
 
 
-print (boggle_solver("slowa.txt"))
+board = [['x', 'x', 'x', 'x'],
+         ['x', 'x', 'x', 'x'],
+         ['x', 'a', 'x', 'x'],
+         ['x', 'x', 'e', 'x']]
+
+
+print(boggle_solver("slowa.txt"), board)

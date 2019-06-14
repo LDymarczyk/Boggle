@@ -1,3 +1,6 @@
+from .solver import boggle_solver
+
+
 class Cube:
 
     def __init__(self, x, y, letter):
@@ -48,3 +51,9 @@ class Boggle:
         for i in range(16):
             ret += str(self.board[i])
         return ret
+
+    def get_board_list(self):
+        return [[self.board[i+j].letter for i in range(4)] for j in range(4)]
+
+    def count_max_points(self):
+        return boggle_solver("slowa.txt", self.board)
