@@ -1,7 +1,8 @@
-from classes import Cube, Boggle
+from classes import *
 
 
 class SimulatedAnnealing:
 
     def __init__(self):
         self.temperature = 100
+
