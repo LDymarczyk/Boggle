@@ -119,10 +119,10 @@ def boggle_solver(file_path, board):
     return summarize_results(solutionDetails)
 
 
-board = [['x', 'x', 'x', 'x'],
-         ['x', 'x', 'x', 'x'],
-         ['x', 'a', 'x', 'x'],
-         ['x', 'x', 'e', 'x']]
+if __name__ == "__main__":
+    board = [['x', 'x', 'x', 'x'],
+             ['x', 'x', 'x', 'x'],
+             ['x', 'a', 'x', 'x'],
+             ['x', 'x', 'e', 'x']]
 
-
-print(boggle_solver("slowa.txt"), board)
+    print boggle_solver("slowa.txt", board)
