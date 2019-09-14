@@ -47,17 +47,29 @@ class Default:
     def __init__(self):
         self.letters = "ABCDEFGHIJKLMNOPRSTUVWXYZ"
 
-    def generate_letter(self):
-        return choice(self.letters)
+    def generate_letters(self, nslots):
+        slots = self.generate_slots(nslots)
+        new_letters = {}
+        for slot in slots:
+            new_letters[slot] = choice(self.letters)
+        return new_letters
 
     def generate_board(self):
         return [[choice(self.letters) for i in range(4)] for j in range(4)]
+
+    @staticmethod
+    def generate_slots(nslots):
+        points = []
+        while len(points) < nslots:
+            point = (randint(0, 3), randint(0, 3))
+            if point not in points:
+                points.append(point)
+        return points
 
 
 class Boggle:
 
     def __init__(self, generator=Default):
-        letters = "ABCDEFGHIJKLMNOPRSTUVWXYZ"
         self.generator = generator()
         self.board = self.generator.generate_board()
 
@@ -72,17 +84,7 @@ class Boggle:
     def count_max_points(self, dictionary="slowa.txt"):
         return boggle_solver(dictionary, self.board)
 
-    @staticmethod
-    def generate_slots(nslots):
-        points = []
-        while len(points) < nslots:
-            point = (randint(0, 3), randint(0, 3))
-            if point not in points:
-                points.append(point)
-        return points
-
     def update_board(self, nslots):
-        slots_coordinates = self.generate_slots(nslots)
-        for slot in slots_coordinates:
-            letter = self.generator.generate_letter()
+        letters = self.generator.generate_letters(nslots)
+        for slot, letter in letters.iteritems():
             self.board[slot[0]][slot[1]] = letter

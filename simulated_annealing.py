@@ -33,17 +33,19 @@ class SimulatedAnnealing:
     def execute(self):
         self.get_started()
         i =1
-        while self.temperature>6:
+        # while self.temperature>6:
             # points = self.count_points(self.board)
-            # self.change_board()w
+        print(self.board.board)
+        self.change_board()
+        print(self.board.board)
             # new_points = self.count_points(self.new_board)
             # print(points, new_points)
             # if new_points > points or exp((points - new_points)/self.temperature) > self.alfa:
-            #     print("greater")
+            #     print("greatwder")
             #     self.board = self.new_board
-            print i
-            i += 1
-            self.temperature *= self.n
+            # print i
+            # i += 1
+            # self.temperature *= self.n
 
 
 
