@@ -25,7 +25,5 @@ class Runner:
             data = "\n".join(data)
             statistic_file.write(data)
 
-#  nic sie nie zapisalo.
 
-
-Runner().run()
+Runner().run(3)

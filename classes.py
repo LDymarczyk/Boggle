@@ -45,7 +45,7 @@ class Word:
 class Default:
 
     def __init__(self):
-        self.letters = "ABCDEFGHIJKLMNOPRSTUVWXYZ"
+        self.letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
     def generate_letters(self, nslots):
         slots = self.generate_slots(nslots)
