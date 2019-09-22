@@ -35,7 +35,7 @@ class SimulatedAnnealing:
         points = self.count_points(self.board)
         self.results.append(str(points))
         print "result ", self.results
-        while self.temperature > 500: #6
+        while self.temperature > 599: #6
             self.change_board()
             new_points = self.count_points(self.new_board)
             self.results.append(str(new_points))
@@ -46,7 +46,7 @@ class SimulatedAnnealing:
             print "result ", self.results
             self.temperature *= self.n
         print("done!")
-        return self.results
+        return self.results, self.board.board
 
 
 if __name__ == "__main__":
@@ -55,4 +55,3 @@ if __name__ == "__main__":
     sa.execute()
     elapsed_time = time.time() - start_time
     print time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
-

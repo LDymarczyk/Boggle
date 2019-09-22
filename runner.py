@@ -21,9 +21,10 @@ class Runner:
         os.chdir(folder)
         with open("{}--{}".format(file_name, str(generator)), 'w') as statistic_file:
             os.chdir(current_folder)
-            data = simulator.execute()
+            data, board = simulator.execute()
             data = "\n".join(data)
             statistic_file.write(data)
+        print(board)
 
 
 Runner().run(3)

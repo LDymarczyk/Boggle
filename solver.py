@@ -1,6 +1,7 @@
 """
 Solves a "Boggle" game board by finding all solutions.
 See http://www.python.org/doc/essays/graphs.html
+https://gist.github.com/RyanBalfanz/6116053
 """
 import operator
 import sys
