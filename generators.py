@@ -46,7 +46,7 @@ class DiceGenerator(Default):
         return [[choice(self.dices[self.dice_order[4*j+i]]) for i in range(4)] for j in range(4)]
 
 
-class FunnyGenerator(Default):
+class LetterFrequencyGenerator(Default):
 
     def __init__(self):
         Default.__init__(self)
@@ -55,7 +55,7 @@ class FunnyGenerator(Default):
 
 
     def __str__(self):
-        return "Funny Generator"
+        return "Letter Frequency Generator"
 
     def generate_devide(self, letters):
         keys = [0 for i in letters]

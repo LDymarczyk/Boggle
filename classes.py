@@ -79,7 +79,7 @@ class Boggle:
         return ret
 
     def get_board_list(self):
-        return [[self.board[i, j] for i in range(4)] for j in range(4)]
+        return [[self.board[i][j] for i in range(4)] for j in range(4)]
 
     def count_max_points(self, dictionary="slowa.txt"):
         return boggle_solver(dictionary, self.board)

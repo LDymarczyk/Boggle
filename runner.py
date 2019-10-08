@@ -1,4 +1,4 @@
-from generators import FunnyGenerator, DiceGenerator, Default
+from generators import LetterFrequencyGenerator, DiceGenerator, Default
 from simulated_annealing import SimulatedAnnealing
 import datetime, os
 
@@ -7,7 +7,7 @@ class Runner:
 
     def __init__(self):
         self.generators = {1: Default,
-                           2: FunnyGenerator,
+                           2: LetterFrequencyGenerator,
                            3: DiceGenerator}
 
     def run(self, generator_id=1):

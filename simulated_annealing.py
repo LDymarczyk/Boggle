@@ -35,7 +35,7 @@ class SimulatedAnnealing:
         points = self.count_points(self.board)
         self.results.append(str(points))
         print "result ", self.results
-        while self.temperature > 599: #6
+        while self.temperature > 6: #6
             self.change_board()
             new_points = self.count_points(self.new_board)
             self.results.append(str(new_points))
@@ -43,8 +43,8 @@ class SimulatedAnnealing:
                 self.board = self.new_board
                 points = new_points
             i += 1
-            print "result ", self.results
             self.temperature *= self.n
+            print "result ", self.results, " temperature: ", self.temperature
         print("done!")
         return self.results, self.board.board
 
