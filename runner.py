@@ -27,5 +27,4 @@ class Runner:
         print(board)
 
 
-for i in range(3):
-    Runner().run(i+1)
+Runner().run(3)
