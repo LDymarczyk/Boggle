@@ -1,5 +1,5 @@
 from generators import LetterFrequencyGenerator, DiceGenerator, Default
-from simulated_annealing import SimulatedAnnealing
+from simulated_annealing import SimulatedAnnealing, Boggle
 import datetime, os
 
 
@@ -26,5 +26,21 @@ class Runner:
             statistic_file.write(data)
         print(board)
 
+    def collect_data_for_statistics(self, generator_id=1, n=50):
+        folder = datetime.datetime.now().strftime("%Y_%m_%d-%H-%M-%S")
+        os.mkdir(folder)
+        file_name = "statistic_data"
+        generator = self.generators[generator_id]
+        for i in range(n):
+            statistic_file = open(os.path.join(folder, "{}--{}".format(file_name, str(generator))), 'a+')
+            game = Boggle(generator)
+            game.get_board_list()
+            points = game.count_max_points()
+            print points
+            statistic_file.write(str(points) + "\n")
+            print(i)
+            statistic_file.close()
 
-Runner().run(3)
+
+# Runner().run(3)
+Runner().collect_data_for_statistics(1, 50)
