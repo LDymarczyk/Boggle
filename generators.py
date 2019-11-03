@@ -1,4 +1,4 @@
-import copy, yaml, random
+import copy, yaml, random, os
 from random import choice, randint, shuffle
 from classes import Default
 from math import ceil
@@ -51,7 +51,7 @@ class LetterFrequencyGenerator(Default):
     def __init__(self):
         Default.__init__(self)
         self.generate_devide(self.letters)
-        self.count_percent()
+        self.count_frequency()
 
 
     def __str__(self):
@@ -69,7 +69,7 @@ class LetterFrequencyGenerator(Default):
         with open("letters.yml", "w") as yamlfile:
             yaml.dump(count_letters, yamlfile, default_flow_style=False)
 
-    def count_percent(self):
+    def count_frequency(self):
         with open("letters.yml", "r") as yamlfile:
             letters_count = yaml.safe_load(yamlfile)
         all_letters = sum(letters_count.values())
@@ -79,6 +79,14 @@ class LetterFrequencyGenerator(Default):
             letters += key * letters_count[key]
         self.letters = ''.join(random.sample(letters, len(letters)))
 
+
+class LetterFrequencyGenerator2(LetterFrequencyGenerator):
+
+    def __init__(self):
+        Default.__init__(self)
+        if not os.path.isfile("letters.yml"):
+            self.generate_devide(self.letters)
+        self.count_frequency()
 
 if __name__=="__main__":
         gen = DiceGenerator()

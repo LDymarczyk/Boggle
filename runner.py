@@ -1,6 +1,6 @@
-from generators import LetterFrequencyGenerator, DiceGenerator, Default
+from generators import LetterFrequencyGenerator, DiceGenerator, Default, LetterFrequencyGenerator2
 from simulated_annealing import SimulatedAnnealing, Boggle
-import datetime, os
+import datetime, os, time
 
 
 class Runner:
@@ -41,6 +41,49 @@ class Runner:
             print(i)
             statistic_file.close()
 
+    def time_counter(self, generator_id=1, n=50):
+        generator = self.generators[generator_id]
+        folder = datetime.datetime.now().strftime("%Y_%m_%d-%H-%M-%S_"+str(generator))
+        os.mkdir(folder)
+        file_name = "time_data"
+        for i in range(n):
+            statistic_file = open(os.path.join(folder, "{}--{}".format(file_name, str(generator))), 'a+')
+            t_start = time.time()
+            game = Boggle(generator)
+            game.update_board(4)
+            t_end = time.time()
+            t = t_end - t_start
+            print(t)
+            statistic_file.write(str(t) + "\n")
+            statistic_file.close()
+        print("done!")
+
+    def sec_time_counter(self, generator_id=1, n=100):
+        self.generators[2] = LetterFrequencyGenerator2
+        generator = self.generators[generator_id]
+        folder = datetime.datetime.now().strftime("%Y_%m_%d-%H-%M-%S_" + str(generator))
+        os.mkdir(folder)
+        file_name = "time_data2"
+        statistic_file = open(os.path.join(folder, "{}--{}".format(file_name, str(generator))), 'a+')
+        t_start = time.time()
+        for i in range(n):
+            game = Boggle(generator)
+        t_end = time.time()
+        t = t_end - t_start
+        t_start = time.time()
+        statistic_file.write(str(t) + " ")
+        for i in range(n):
+            game.update_board(4)
+        t_end = time.time()
+        t = t_end - t_start
+        statistic_file.write(str(t) + "\n")
+        statistic_file.close()
+        print("done!")
+
+
 
 # Runner().run(3)
-Runner().collect_data_for_statistics(1, 50)
+#Runner().collect_data_for_statistics(3, 50)
+
+for i in xrange(3):
+    Runner().sec_time_counter(i+1)
